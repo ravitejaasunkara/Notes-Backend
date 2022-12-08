@@ -89,3 +89,17 @@ exports.getAllLikedNotes = async(req,res) => {
         res.status(400).json({error:err,status:false});;
     }
 }
+
+//this will give all the notes belongs to a particular user
+exports.getNoteByUserId = async(req,res) => {
+    try{
+        const userNotes = await notesModel.find({userId:req.params.userId});
+        if(userNotes.length != 0){
+            res.status(200).json({result:userNotes,status:true});
+        }else{
+            res.status(404).json({result:'No data',status:false});
+        }
+    }catch(err){
+        res.status(400).json({error:err,status:false});
+    }
+}
