@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const notesController = require('./controllers/NotesController');
 const authController = require('./controllers/AuthController');
 app.use(bodyParser.json());
-
+app.use(cors());
 app.get('/',(req,res) => {
     res.json({result:"Hello..!"})
 })
