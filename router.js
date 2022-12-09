@@ -17,7 +17,7 @@ app.delete('/notes/:noteId',notesController.deleteNote);
 app.post('/auth/signup',authController.signup);
 app.post('/auth/login',authController.login);
 app.patch('/notes/favourites/:noteId',notesController.favourites);
-app.get('/favnotes',notesController.getAllLikedNotes);
+app.get('/favnotes/:userId',notesController.getAllLikedNotes);
 app.get('/notes/user/:userId',notesController.getNoteByUserId);
 app.get('/*',(req,res) => {
     res.status(404).json({error:'No data here'});
