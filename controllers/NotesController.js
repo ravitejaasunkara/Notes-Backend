@@ -83,7 +83,7 @@ exports.favourites = async(req,res) => {
 /* This is a function that is used to get all the notes that are liked. */
 exports.getAllLikedNotes = async(req,res) => {
     try{
-        const favNotes = await notesModel.find({isFav:true});
+        const favNotes = await notesModel.find({isFav:true,userId:req.params.userId});
         res.status(200).json({result:favNotes,status:true});
     }catch(err){
         res.status(400).json({error:err,status:false});;
