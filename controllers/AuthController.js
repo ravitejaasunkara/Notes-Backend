@@ -30,5 +30,5 @@ exports.login = async(req,res) => {
         res.status(404).json({error:'Password mismatch',status:false});
         return;
     }
-    res.status(200).json({result:"Authentication success",userId:userCheck._id,status:true});
+    res.status(200).json({result:"Authentication success",userId:userCheck._id,status:true,userName:userCheck.username});
 }
