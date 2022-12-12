@@ -14,7 +14,7 @@ exports.signup = async (req,res) => {
             await authModel.create(data);
             res.status(200).send({result:'User created',status:true});
         }catch(err){
-            res.send({error:err,status:false});
+            res.status(404).send({error:err,status:false});
         }
     }
 }
