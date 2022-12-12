@@ -12,7 +12,8 @@ exports.signup = async (req,res) => {
     }else{
         try{
             await authModel.create(data);
-            res.status(200).send({result:'User created',status:true});
+            const user = await authModel.find({email:req.body.email});
+            res.status(200).send({result:'User created',status:true,userId:user._id});
         }catch(err){
             res.status(404).send({error:err,status:false});
         }
