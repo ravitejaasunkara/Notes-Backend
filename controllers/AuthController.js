@@ -11,8 +11,7 @@ exports.signup = async (req,res) => {
         res.status(400).json({error:'Email already exists',status:false});
     }else{
         try{
-            await authModel.create(data);
-            const user = await authModel.find({email:req.body.email});
+            const user = await authModel.create(data);
             res.status(200).send({result:'User created',status:true,userId:user._id});
         }catch(err){
             res.status(404).send({error:err,status:false});
