@@ -73,7 +73,7 @@ exports.favourites = async(req,res) => {
     const _id = ObjectId(req.params.noteId);
     try{
         const data = await notesModel.find({_id});
-        await notesModel.updateOne({_id},{$set:{isFav:req.body}});
+        await notesModel.updateOne({_id},{$set:{isFav:req.body.isFav}});
         res.status(200).json({result:"Success",status:true});
     }catch(error){
         res.status(400).json({error:err,status:false});
